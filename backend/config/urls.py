@@ -16,8 +16,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.http import HttpResponse  # Import for a simple response
+
+def home(request):
+    return HttpResponse("Welcome to the HCL API!")  # Simple response for the root URL
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include('core.urls')),
+    path('', home),  # Added root path
 ]
